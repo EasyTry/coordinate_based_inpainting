@@ -80,7 +80,7 @@ class InvGridSamplerNumerator(nn.Module):
                     F.relu(1 - torch.abs((output_cells_float[..., 1] - corners_j)))
 
                 add_repeated(A, (output_inds_b, output_inds_ch, output_inds_i, output_inds_j),
-                             x.view(-1) * bilinear_weights)
+                             x.reshape(-1) * bilinear_weights)
         A = A[..., 1:h + 1, 1:w + 1]  # cutting out the border
         return A
 
